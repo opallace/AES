@@ -1,8 +1,8 @@
 #ifndef AES_H_INCLUDED
 #define AES_H_INCLUDED
 
-#define nk 4
-#define nr 10
+#define nk 8
+#define nr 14
 
 static const uint8_t sbox[256] = {
   	0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76,
@@ -43,19 +43,6 @@ static const uint8_t rsbox[256] = {
 };
 
 static const uint8_t rcon[11] = {0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1B, 0x36};
-
-uint8_t gmul(uint8_t a, uint8_t b);
-uint8_t* load_block(FILE* text, uint8_t size, uint8_t count);
-uint8_t** block_1D_to_2D(uint8_t* block, int y, int x);
-uint8_t* block_2D_to_1D(uint8_t** formatted_block, int y, int x);
-uint8_t** init_round_key();
-int get_size(FILE* file);
-void add_padding(uint8_t* block, uint8_t pad);
-
-uint8_t* AES_256_key_init();
-uint8_t* AES_192_key_init();
-uint8_t* AES_128_key_init();
-void AES_generate_key(uint8_t* key, uint8_t size);
 
 void KeyExpansion(uint8_t **round_key, uint8_t** key);
 void addRoundKey(int round, uint8_t** state, uint8_t **round_key);
